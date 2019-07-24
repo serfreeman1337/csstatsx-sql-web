@@ -16,6 +16,9 @@ class PlayerController extends Controller
 				abort(404);
 			}
 
-			return view('player')->with('player', $p);
+			return view('player', [
+				'player' => $p,
+				'stats_num' => \App\Players::count()
+			]);
     }
 }

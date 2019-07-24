@@ -130,7 +130,6 @@ class Players extends Model
 
 	public function getRoundsRatioAttribute()
 	{
-		$wr = $this->win_ratio;
 		$r = [
 			'as_t' => 0.00,
 			'as_ct' => 0.00,

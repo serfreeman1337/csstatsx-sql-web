@@ -6,18 +6,13 @@
 	<div class="card-body">
 		<div class="card-title">
 			<span class="h2">{{ $player->name }}</span>
+			<div class="clear-fix"></div>
+			<span class="h6">Rank #<strong>{{ $player->rank }}</strong> of <strong>{{ $stats_num }}</strong></span>
 		</div>
-	</div>
-
-	<div class="container">
 		<div class="row">
 			<div class="col">
 				<table class="table table-bordered table-sm">
 					<tbody>
-						<tr>
-							<td>Rank</td>
-							<td>{{ $player->rank }}</td>
-						</tr>
 						<tr>
 							<td>Skill</td>
 							<td>{{ $player->skill }}</td>
@@ -135,10 +130,6 @@
 						<tr>
 							<td>First Connect</td>
 							<td>{{ date('j M Y H:i:s', strtotime($player->first_join)) }}</td>
-						</tr>
-						<tr>
-							<td>SteamID</td>
-							<td>{{ $player->steamid }}</td>
 						</tr>
 					</tbody>
 				</table>
