@@ -151,4 +151,9 @@ class Players extends Model
 
 		return $r;
 	}
+
+	public function weapons()
+	{
+		return $this->hasMany('App\Weapons', 'player_id');
+	}
 }
