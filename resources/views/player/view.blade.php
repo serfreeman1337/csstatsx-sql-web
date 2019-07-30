@@ -15,6 +15,10 @@
 		  </li>
 		  <li class="nav-item">
 		    <a class="nav-link{{ request()->routeIs('player.weapons') ? ' active' : ''}}" href="{{ route('player.weapons', ['authid' => $player->authid]) }}">Weapons</a>
+			</li>
+		  <li class="nav-item">
+		    <a class="nav-link{{ request()->routeIs('player.maps') ? ' active' : ''}}" href="{{ route('player.maps', ['authid' => $player->authid]) }}">Maps</a>
+			</li>
 		</ul>
 
 		@yield('stats')

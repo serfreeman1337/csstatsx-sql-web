@@ -56,7 +56,7 @@
 				<tr>
 					<td>Rounds</td>
 					<td>
-						{{ $player->rounds_played }} (Win.: {{ $player->rounds_wins }}, Loss.: {{ $player->rounds_played - $player->rounds_wins }})
+						{{ $player->rounds_played }} (Win.: {{ $player->rounds_won }}, Loss.: {{ $player->rounds_played - $player->rounds_won }})
 					</td>
 				</tr>
 				<tr>
@@ -80,7 +80,7 @@
 					<td>Wins</td>
 					<td>
 						<div class="progress">
-							@if ($player->win_ratio)
+							@if ($player->win_rate)
 								<div class="progress-bar" role="progressbar"
 									style="width: {{ $player->rounds_ratio['win_ct'] }}%;" aria-valuenow="{{ $player->rounds_ratio['win_ct'] }}" aria-valuemin="0" aria-valuemax="100"
 									data-toggle="tooltip" data-placement="top" title="{{ $player->rounds_ratio['win_ct'] }}% of wins as CT">

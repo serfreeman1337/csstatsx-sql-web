@@ -118,14 +118,14 @@ class Players extends Model
 	{
 		return ($this->roundt + $this->roundct);
 	}
-	public function getRoundsWinsAttribute()
+	public function getRoundsWonAttribute()
 	{
 		return ($this->winct + $this->wint);
 	}
 
-	public function getWinRatioAttribute()
+	public function getWinRateAttribute()
 	{
-		return ($this->rounds_wins) ? number_format(($this->rounds_wins / $this->rounds_played) * 100.0, 2) : 0.00;
+		return ($this->rounds_won) ? number_format(($this->rounds_won / $this->rounds_played) * 100.0, 2) : '0.00';
 	}
 
 	public function getRoundsRatioAttribute()
@@ -143,7 +143,7 @@ class Players extends Model
 			$r['as_ct'] = number_format(($this->roundct / $this->rounds_played) * 100.0, 2);
 		}
 
-		if($this->rounds_wins)
+		if($this->rounds_won)
 		{
 			$r['win_t'] = number_format(($this->wint / $this->rounds_played) * 100.0, 2);
 			$r['win_ct'] = number_format(($this->winct / $this->rounds_played) * 100.0, 2);
@@ -155,5 +155,10 @@ class Players extends Model
 	public function weapons()
 	{
 		return $this->hasMany('App\Weapons', 'player_id');
+	}
+
+	public function maps()
+	{
+		return $this->hasMany('App\Maps', 'player_id');
 	}
 }

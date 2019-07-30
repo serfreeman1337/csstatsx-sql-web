@@ -18,11 +18,6 @@ class Weapons extends Model
 		return $this->belongsTo('App\Players', 'id', 'player_id');
 	}
 
-	public function sort()
-	{
-		return $this->sort('kills', 'desc');
-	}
-
 	public function getAccuracyAttribute()
 	{
 		if(!$this->shots) {

@@ -9,29 +9,53 @@ class PlayerController extends Controller
 {
     public function view($authid)
     {
-    	$p = \App\Players::findByAuthId($authid)->first();
+    	$player = \App\Players::findByAuthId($authid)->first();
 
-			if(!$p) {
+			if(!$player) {
 				abort(404);
 			}
 
 			return view('player.overall', [
-				'player' => $p,
+				'player' => $player,
 				'stats_num' => \App\Players::count()
 			]);
     }
 
 		public function weapons($authid)
 		{
-			$p = \App\Players::findByAuthId($authid)->first();
+			$player = \App\Players::findByAuthId($authid)->first();
 
-			if(!$p) {
+			if(!$player) {
 				abort(404);
 			}
 
+			$weapons = $player->weapons()
+				->orderBy('kills', 'desc')
+				->get();
+
 			return view('player.weapons', [
-				'player' => $p,
-				'weapons' => $p->weapons()->orderBy('kills', 'desc')->get(),
+				'player' => $player,
+				'weapons' => $weapons,
+				'stats_num' => \App\Players::count()
+			]);
+		}
+
+		public function maps($authid)
+		{
+			$player = \App\Players::findByAuthId($authid)->first();
+
+			if(!$player) {
+				abort(404);
+			}
+
+			$maps = $player->maps()
+				->groupBy('map')
+				->orderBy('connection_time', 'DESC')
+				->get();
+
+			return view('player.maps', [
+				'player' => $player,
+				'maps' => $maps,
 				'stats_num' => \App\Players::count()
 			]);
 		}
