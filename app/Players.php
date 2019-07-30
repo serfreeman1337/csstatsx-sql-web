@@ -111,7 +111,7 @@ class Players extends Model
 			return 0;
 		}
 
-		return number_format(($this->hits / ($this->shots + $this->hits) * 100.0), 2);
+		return number_format(($this->hits / ($this->shots) * 100.0), 2);
 	}
 
 	public function getRoundsPlayedAttribute()

@@ -15,7 +15,7 @@ class Weapons extends Model
 
 	public function player()
 	{
-		return $this->belongsTo('App\Players', 'id', 'player_id');
+		return $this->belongsTo('App\Players', 'player_id', 'id');
 	}
 
 	public function getAccuracyAttribute()

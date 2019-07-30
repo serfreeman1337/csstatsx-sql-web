@@ -1,0 +1,11 @@
+.progress-val {
+	position: relative;
+	background: #ccc;
+}
+
+.progress-bar-val {
+	position: absolute;
+	left: 0;
+	right: 0;
+	color: #fff;
+}

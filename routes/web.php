@@ -11,7 +11,9 @@
 |
 */
 
-Route::get('/', "TopController@list");
+Route::get('/', "TopController@list")->name('top');
 Route::get('/player/{authid}', 'PlayerController@view')->name('player');
 Route::get('/player/{authid}/weapons', 'PlayerController@weapons')->name('player.weapons');
 Route::get('/player/{authid}/maps', 'PlayerController@maps')->name('player.maps');
+Route::get('weapons', 'WeaponsController@view')->name('weapons');
+Route::get('weapons/{weapon}', 'WeaponsController@players')->name('weapons.players');
