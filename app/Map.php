@@ -27,18 +27,4 @@ class Map extends Model
 	{
 		return ($this->wint + $this->winct);
 	}
-
-	public function getWinRateAttribute()
-	{
-		return ($this->rounds_won) ? number_format(($this->rounds_won / $this->rounds_played) * 100.0, 2) : '0.00';
-	}
-
-	public function getKdAttribute()
-	{
-		if(!$this->deaths) {
-			return $this->kills;
-		}
-
-		return number_format(($this->kills / $this->deaths), 2);
-	}
 }

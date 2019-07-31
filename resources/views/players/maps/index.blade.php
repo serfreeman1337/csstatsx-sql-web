@@ -24,10 +24,10 @@
 					<td>{{ $map->connection_time }}</td>
 					<td>{{ $map->rounds_played }}</td>
 					<td>{{ $map->rounds_won }}</td>
-					<td>{{ $map->win_rate }} %</td>
+					<td>{{ calculate_ratio($map->rounds_won, $map->rounds_played) }}%</td>
 					<td>{{ $map->kills }}</td>
 					<td>{{ $map->deaths }}</td>
-					<td>{{ $map->kd }}</td>
+					<td>{{ calculate_ratio($map->kills, $map->deaths, false) }}</td>
 					<td>{{ $map->hs }}</td>
 				</tr>
 				@endforeach

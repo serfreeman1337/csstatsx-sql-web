@@ -17,13 +17,4 @@ class Weapon extends Model
 	{
 		return $this->belongsTo('App\Player', 'player_id', 'id');
 	}
-
-	public function getAccuracyAttribute()
-	{
-		if(!$this->shots) {
-			return 0;
-		}
-
-		return number_format(($this->hits / ($this->shots + $this->hits) * 100.0), 2);
-	}
 }

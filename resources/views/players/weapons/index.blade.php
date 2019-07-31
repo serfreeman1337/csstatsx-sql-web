@@ -23,7 +23,7 @@
 					<td>{{ $weapon->hs }}</td>
 					<td>{{ $weapon->shots }}</td>
 					<td>{{ $weapon->hits }}</td>
-					<td>{{ $weapon->accuracy }} %</td>
+					<td>{{ calculate_ratio($weapon->hits, $weapon->shots) }}%</td>
 					<td>{{ $weapon->dmg }}</td>
 				</tr>
 				@endforeach
