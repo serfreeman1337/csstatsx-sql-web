@@ -33,18 +33,18 @@
 							<td>
 								{!! bootstrap_progress([
 									['num' => $weapon->kills, 'of' => $total_kills]
-								], true) !!}
+								], ['center_val' => true]) !!}
 							</td>
 							<td>{{ $weapon->hs }}</td>
 							<td>
 								{!! bootstrap_progress([
 									['num' => $weapon->hs, 'of' => $total_hs]
-								], true) !!}
+								], ['center_val' => true]) !!}
 							</td>
 							<td>
 								{!! bootstrap_progress([
 									['num' => $weapon->hs, 'of' => $weapon->kills]
-								], true) !!}
+								], ['center_val' => true]) !!}
 							</td>
 						</tr>
 						@endforeach

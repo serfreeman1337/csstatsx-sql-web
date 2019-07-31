@@ -34,7 +34,7 @@
 						<td>{{ $player->kills }}</td>
 						<td>{{ $player->deaths }}</td>
 						<td>{{ $player->hs }}</td>
-						<td>{{ $player->kd }}</td>
+						<td>{{ calculate_ratio($player->kills, $player->deaths, false) }}</td>
 						<td>{{ $player->last_join }}</td>
 					</tr>
 					@endforeach

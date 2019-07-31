@@ -44,7 +44,7 @@
 								'num' => $weapon->hs,
 								'of' => $weapon->kills,
 							]
-						], true) !!}</td>
+						], ['center_val' => true]) !!}</td>
 					</tr>
 					@endforeach
 				</tbody>

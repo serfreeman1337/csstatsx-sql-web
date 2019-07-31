@@ -87,33 +87,6 @@ class Players extends Model
 		}
 	}
 
-	public function getKdAttribute()
-	{
-		if(!$this->deaths) {
-			return $this->kills;
-		}
-
-		return number_format(($this->kills / $this->deaths), 2);
-	}
-
-	public function getHkAttribute()
-	{
-		if(!$this->kills) {
-			return $this->hs;
-		}
-
-		return number_format(($this->hs / $this->kills), 2);
-	}
-
-	public function getAccuracyAttribute()
-	{
-		if(!$this->shots) {
-			return 0;
-		}
-
-		return number_format(($this->hits / ($this->shots) * 100.0), 2);
-	}
-
 	public function getRoundsPlayedAttribute()
 	{
 		return ($this->roundt + $this->roundct);
@@ -121,35 +94,6 @@ class Players extends Model
 	public function getRoundsWonAttribute()
 	{
 		return ($this->winct + $this->wint);
-	}
-
-	public function getWinRateAttribute()
-	{
-		return ($this->rounds_won) ? number_format(($this->rounds_won / $this->rounds_played) * 100.0, 2) : '0.00';
-	}
-
-	public function getRoundsRatioAttribute()
-	{
-		$r = [
-			'as_t' => 0.00,
-			'as_ct' => 0.00,
-			'win_t' => 0.00,
-			'win_ct' => 0.00
-		];
-
-		if($this->rounds_played)
-		{
-			$r['as_t'] = number_format(($this->roundt / $this->rounds_played) * 100.0, 2);
-			$r['as_ct'] = number_format(($this->roundct / $this->rounds_played) * 100.0, 2);
-		}
-
-		if($this->rounds_won)
-		{
-			$r['win_t'] = number_format(($this->wint / $this->rounds_played) * 100.0, 2);
-			$r['win_ct'] = number_format(($this->winct / $this->rounds_played) * 100.0, 2);
-		}
-
-		return $r;
 	}
 
 	public function weapons()

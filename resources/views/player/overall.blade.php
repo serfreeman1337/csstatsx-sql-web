@@ -23,11 +23,11 @@
 				</tr>
 				<tr>
 					<td>K/D</td>
-					<td>{{ $player->kd }}</td>
+					<td>{{ calculate_ratio($player->kills, $player->deaths, false) }}</td>
 				</tr>
 				<tr>
 					<td>H/K</td>
-					<td>{{ $player->hk }}</td>
+					<td>{{ calculate_ratio($player->hs, $player->kills, false) }}</td>
 				</tr>
 				<tr>
 					<td>Damage</td>
@@ -44,7 +44,7 @@
 				<tr>
 					<td>Shots Accuracy</td>
 					<td>
-						{{ $player->accuracy }}%
+						{{ calculate_ratio($player->hits, $player->shots) }}%
 					</td>
 				</tr>
 			</tbody>
@@ -62,37 +62,20 @@
 				<tr>
 						<td>Teams</td>
 						<td>
-							<div class="progress">
-								<div class="progress-bar" role="progressbar"
-									style="width: {{ $player->rounds_ratio['as_ct'] }}%;" aria-valuenow="{{ $player->rounds_ratio['as_ct'] }}" aria-valuemin="0" aria-valuemax="100"
-									data-toggle="tooltip" data-placement="top" title="{{ $player->rounds_ratio['as_ct'] }}% of rounds as CT">
-									{{ $player->roundct }}
-								</div>
-								<div class="progress-bar bg-danger" role="progressbar"
-									style="width: {{ $player->rounds_ratio['as_t'] }}%;" aria-valuenow="{{ $player->rounds_ratio['as_t'] }}" aria-valuemin="0" aria-valuemax="100"
-									data-toggle="tooltip" data-placement="top" title="{{ $player->rounds_ratio['as_t'] }}% of rounds as Terrorist">
-									{{ $player->roundt }}
-								</div>
-							</div>
+							{!! bootstrap_progress([
+								['num' => $player->roundct, 'of' => $player->rounds_played, 'print_val' => true, 'tip' => 'top', 'tip_text' => '%ratio% of rounds as CT'],
+								['num' => $player->roundt, 'of' => $player->rounds_played, 'class' => 'bg-danger', 'print_val' => true, 'tip' => 'top', 'tip_text' => '%ratio% of rounds as Terrorist']
+							]) !!}
 						</td>
 				</tr>
 				<tr>
 					<td>Wins</td>
 					<td>
-						<div class="progress">
-							@if ($player->win_rate)
-								<div class="progress-bar" role="progressbar"
-									style="width: {{ $player->rounds_ratio['win_ct'] }}%;" aria-valuenow="{{ $player->rounds_ratio['win_ct'] }}" aria-valuemin="0" aria-valuemax="100"
-									data-toggle="tooltip" data-placement="top" title="{{ $player->rounds_ratio['win_ct'] }}% of wins as CT">
-									{{ $player->winct }}
-								</div>
-								<div class="progress-bar bg-danger" role="progressbar"
-									style="width: {{ $player->rounds_ratio['win_t'] }}%;" aria-valuenow="{{ $player->rounds_ratio['win_t'] }}" aria-valuemin="0" aria-valuemax="100"
-									data-toggle="tooltip" data-placement="top" title="{{ $player->rounds_ratio['win_t'] }}% of wins as Terrorist">
-									{{ $player->wint }}
-								</div>
-							@endif
-						</div>
+						{!! bootstrap_progress([
+							['num' => $player->winct, 'of' => $player->rounds_played, 'print_val' => true, 'tip' => 'top', 'tip_text' => '%ratio% of wins as CT'],
+							['num' => $player->wint, 'of' => $player->rounds_played, 'class' => 'bg-danger', 'print_val' => true, 'tip' => 'top', 'tip_text' => '%ratio% of wins as Terrorist']
+						])
+						!!}
 					</td>
 				</tr>
 				<tr>

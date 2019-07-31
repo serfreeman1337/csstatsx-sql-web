@@ -14,19 +14,31 @@ if(!function_exists('calculate_ratio'))
 
 if(!function_exists('bootstrap_progress'))
 {
-	function bootstrap_progress($bars, $is_center = false) {
+	function bootstrap_progress($bars, $params = array()) {
 		$progress_class = '';
-		if($is_center) $progress_class = ' progress-val';
+		if(isset($params['center_val'])) $progress_class = ' progress-val';
 
-		$r = '<div class="progress'.$progress_class.'" style="width: 100px;">';
+		$r = '<div class="progress'.$progress_class.'">';
 
 		foreach($bars as $bar) {
 			$ratio = calculate_ratio($bar['num'], $bar['of']);
-			$class = '';
+			$class = isset($bar['class']) ? ' '.$bar['class'] : '';
 
-			$r .= '<div class="progress-bar'.$class.'" role="progressbar" style="width: '.$ratio.'%;" aria-valuenow="'.$ratio.'" aria-valuemin="0" aria-valuemax="100"></div>';
+			$r .= '<div class="progress-bar'.$class.'" role="progressbar" style="width: '.$ratio.'%;" aria-valuenow="'.$ratio.'" aria-valuemin="0" aria-valuemax="100"';
 
-			if($is_center) {
+			if(isset($bar['tip'])) {
+				$tip = str_replace('%ratio', $ratio, $bar['tip_text']);
+				$r .= ' data-toggle="tooltip" data-placement="'.$bar['tip'].'" title="'.$tip.'"';
+			}
+
+			$r .= '>';
+
+			if(isset($bar['print_val'])) {
+				$r .= $bar['num'];
+			}
+			$r .= '	</div>';
+
+			if(isset($params['center_val'])) {
 				$r .= '
 				<div class="progress-bar-val">
 					'.$ratio.'%
