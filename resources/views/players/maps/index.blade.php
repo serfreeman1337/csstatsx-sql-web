@@ -1,4 +1,4 @@
-@extends('player.view')
+@extends('players.layout')
 
 @section('stats')
 <div class="row">

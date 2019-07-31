@@ -29,7 +29,7 @@
 					@foreach ($players as $player)
 					<tr>
 						<th scope="row">{{ $player->rank }}</th>
-						<td class="text-left"><a href="/player/{{ $player->authid }}">{{ $player->name }}</a></td>
+						<td class="text-left"><a href="{{ route('players.show', ['authid' => $player->authid]) }}">{{ $player->name }}</a></td>
 						<td>{{ $player->skill }}</td>
 						<td>{{ $player->kills }}</td>
 						<td>{{ $player->deaths }}</td>

@@ -28,7 +28,7 @@
 						@foreach ($weapons as $pos => $weapon)
 						<tr>
 							<td>{{ ($pos+1) }}</td>
-							<td><a href="{{ route('weapons.players', ['weapon' => $weapon->weapon]) }}">{{ $weapon->weapon }}</a></td>
+							<td><a href="{{ route('weapons.show', ['weapon' => $weapon->weapon]) }}">{{ $weapon->weapon }}</a></td>
 							<td>{{ $weapon->kills }}</td>
 							<td>
 								{!! bootstrap_progress([

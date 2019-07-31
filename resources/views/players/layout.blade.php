@@ -11,13 +11,13 @@
 		</div>
 		<ul class="nav nav-tabs" style="margin-bottom: 1em;">
 		  <li class="nav-item">
-		    <a class="nav-link{{ request()->routeIs('player') ? ' active' : ''}}" href="{{ route('player', ['authid' => $player->authid]) }}">Overall</a>
+		    <a class="nav-link{{ request()->routeIs('players.show') ? ' active' : ''}}" href="{{ route('players.show', ['authid' => $player->authid]) }}">Overall</a>
 		  </li>
 		  <li class="nav-item">
-		    <a class="nav-link{{ request()->routeIs('player.weapons') ? ' active' : ''}}" href="{{ route('player.weapons', ['authid' => $player->authid]) }}">Weapons</a>
+		    <a class="nav-link{{ request()->routeIs('players.show.weapons') ? ' active' : ''}}" href="{{ route('players.show.weapons', ['authid' => $player->authid]) }}">Weapons</a>
 			</li>
 		  <li class="nav-item">
-		    <a class="nav-link{{ request()->routeIs('player.maps') ? ' active' : ''}}" href="{{ route('player.maps', ['authid' => $player->authid]) }}">Maps</a>
+		    <a class="nav-link{{ request()->routeIs('players.show.maps') ? ' active' : ''}}" href="{{ route('players.show.maps', ['authid' => $player->authid]) }}">Maps</a>
 			</li>
 		</ul>
 

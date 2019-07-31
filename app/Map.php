@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Maps extends Model
+class Map extends Model
 {
 	public $timestamps = false;
 
@@ -15,7 +15,7 @@ class Maps extends Model
 
 	public function player()
 	{
-		return $this->belongsTo('App\Players', 'id', 'player_id');
+		return $this->belongsTo('App\Player', 'player_id', 'id');
 	}
 
 	public function getRoundsPlayedAttribute()

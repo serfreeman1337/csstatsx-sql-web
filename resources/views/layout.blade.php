@@ -18,7 +18,7 @@
 	        <a class="nav-link" href="/">Stats</a>
 	      </li>
 	      <li class="nav-item{{ request()->routeIs('weapons*') ? ' active' : ''}}">
-	        <a class="nav-link" href="{{ route('weapons') }}">Weapons</a>
+	        <a class="nav-link" href="{{ route('weapons.index') }}">Weapons</a>
 	      </li>
 	    </ul>
 		</nav>

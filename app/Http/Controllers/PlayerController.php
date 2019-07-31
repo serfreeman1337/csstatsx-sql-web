@@ -3,60 +3,25 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Helpers;
 
 class PlayerController extends Controller
 {
-    public function view($authid)
+		public function index()
+		{
+			return view('players.index')->with('players', \App\Player::top());
+		}
+
+    public function show($authid)
     {
-    	$player = \App\Players::findByAuthId($authid)->first();
+    	$player = \App\Player::findByAuthId($authid)->first();
 
 			if(!$player) {
 				abort(404);
 			}
 
-			return view('player.overall', [
+			return view('players.show', [
 				'player' => $player,
-				'stats_num' => \App\Players::count()
+				'stats_num' => \App\Player::count()
 			]);
     }
-
-		public function weapons($authid)
-		{
-			$player = \App\Players::findByAuthId($authid)->first();
-
-			if(!$player) {
-				abort(404);
-			}
-
-			$weapons = $player->weapons()
-				->orderBy('kills', 'desc')
-				->get();
-
-			return view('player.weapons', [
-				'player' => $player,
-				'weapons' => $weapons,
-				'stats_num' => \App\Players::count()
-			]);
-		}
-
-		public function maps($authid)
-		{
-			$player = \App\Players::findByAuthId($authid)->first();
-
-			if(!$player) {
-				abort(404);
-			}
-
-			$maps = $player->maps()
-				->groupBy('map')
-				->orderBy('connection_time', 'DESC')
-				->get();
-
-			return view('player.maps', [
-				'player' => $player,
-				'maps' => $maps,
-				'stats_num' => \App\Players::count()
-			]);
-		}
 }

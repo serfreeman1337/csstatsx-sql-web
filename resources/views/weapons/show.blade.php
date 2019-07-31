@@ -5,7 +5,7 @@
 <div class="card">
 	<div class="card-body">
 		<div class="card-title">
-			<span class="h2">Weapons</span>
+			<span class="h2">{{ $weapon }} weapon stats</span>
 			<div class="float-right">
 				{{ $weapons->links() }}
 			</div>
@@ -31,7 +31,7 @@
 					@foreach ($weapons as $pos => $weapon)
 					<tr>
 						<td>{{ ($pos+1) }}</td>
-						<td><a href="{{ route('player', ['authid' => $weapon->player->authid]) }}">{{ $weapon->player->name }}</a></td>
+						<td><a href="{{ route('players.show', ['authid' => $weapon->player->authid]) }}">{{ $weapon->player->name }}</a></td>
 						<td>{{ $weapon->player->rank }}</td>
 						<td>{{ $weapon->kills }}</td>
 						<td>{{ $weapon->deaths }}</td>

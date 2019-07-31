@@ -5,7 +5,7 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
 
-class Players extends Model
+class Player extends Model
 {
 	public $timestamps = false;
 
@@ -24,8 +24,8 @@ class Players extends Model
 	{
 		$per_page = 20;
 
-		$r = Players::select('*');
-		$r->addSelect(DB::raw(Players::getRankFormula().' as s'));
+		$r = Player::select('*');
+		$r->addSelect(DB::raw(Player::getRankFormula().' as s'));
 
 		// - for pagination "ranking" -
 		$page = (int)request('page') - 1;
@@ -43,19 +43,19 @@ class Players extends Model
 
 	public static function findByAuthId($authid)
 	{
-		return Players::where(Players::authField(), $authid);
+		return Player::where(Player::authField(), $authid);
 	}
 
 	public function getRankAttribute()
 	{
 		if($this->r) return $this->r;
 
-		return Players::whereRaw(Players::getRankFormula().' >= '.$this->score)->count();
+		return Player::whereRaw(Player::getRankFormula().' >= '.$this->score)->count();
 	}
 
 	public function getAuthidAttribute()
 	{
-		$d = Players::authField();
+		$d = Player::authField();
 		return $this->$d;
 	}
 
@@ -98,11 +98,11 @@ class Players extends Model
 
 	public function weapons()
 	{
-		return $this->hasMany('App\Weapons', 'player_id');
+		return $this->hasMany('App\Weapon', 'player_id');
 	}
 
 	public function maps()
 	{
-		return $this->hasMany('App\Maps', 'player_id');
+		return $this->hasMany('App\Map', 'player_id');
 	}
 }
