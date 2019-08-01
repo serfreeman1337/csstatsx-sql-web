@@ -2,11 +2,21 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\DB;
+
 class PlayerController extends Controller
 {
     public function index()
     {
-        return view('players.index')->with('players', \App\Player::top());
+        $per_page = 20;
+
+        $players = \App\Player::select('*', DB::raw(\App\Player::getRankFormula().' as s'))
+                    ->orderBy('s', 'desc')
+                    ->paginate($per_page);
+
+        return view('players.index', [
+            'players' => $players
+        ]);
     }
 
     public function show($authid)

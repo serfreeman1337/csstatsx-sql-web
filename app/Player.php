@@ -20,27 +20,6 @@ class Player extends Model
         return $a[env('CSSTATS_RANK', 0)];
     }
 
-    public static function top()
-    {
-        $per_page = 20;
-
-        $r = Player::select('*');
-        $r->addSelect(DB::raw(Player::getRankFormula().' as s'));
-
-        // - for pagination "ranking" -
-        $page = (int)request('page') - 1;
-        if ($page < 0) {
-            $page = 0;
-        }
-        DB::statement("set @r = ".($per_page * $page));
-        $r->addSelect(DB::raw('@r := @r + 1 r'));
-        // - - //
-
-        $r->orderBy('s', 'desc');
-
-        return $r->paginate($per_page);
-    }
-
     public static function findByAuthId($authid)
     {
         return Player::where(Player::authField(), $authid);
@@ -48,10 +27,6 @@ class Player extends Model
 
     public function getRankAttribute()
     {
-        if ($this->r) {
-            return $this->r;
-        }
-
         return Player::whereRaw(Player::getRankFormula().' >= '.$this->score)->count();
     }
 
@@ -61,7 +36,7 @@ class Player extends Model
         return $this->$d;
     }
 
-    private static function getRankFormula()
+    public static function getRankFormula()
     {
         $rank_formula = [
             '(kills-deaths-tks)',
@@ -79,7 +54,7 @@ class Player extends Model
         if ($this->s) {
             return $this->s;
         }
-        
+
         // uh oh why
         switch (env('CSSTATS_SQL_RANKFORMULA', 0)) {
             case 1:

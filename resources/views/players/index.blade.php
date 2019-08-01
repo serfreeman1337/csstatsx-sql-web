@@ -26,9 +26,9 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($players as $player)
+                    @foreach ($players as $pos => $player)
                     <tr>
-                        <th scope="row">{{ $player->rank }}</th>
+                        <th scope="row">{{ rank_for_top($pos, $players) }}</th>
                         <td class="text-left"><a href="{{ route('players.show', ['authid' => $player->authid]) }}">{{ $player->name }}</a></td>
                         <td>{{ $player->skill }}</td>
                         <td>{{ $player->kills }}</td>

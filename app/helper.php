@@ -1,5 +1,13 @@
 <?php
 
+if(!function_exists('rank_for_top'))
+{
+	function rank_for_top($pos, $paginator)
+	{
+		return ($pos+1) + (($paginator->currentPage() - 1)* $paginator->perPage());
+	}
+}
+
 if(!function_exists('calculate_ratio'))
 {
 	function calculate_ratio($num, $of, $rate = true)

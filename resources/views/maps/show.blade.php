@@ -30,7 +30,7 @@
                 <tbody>
                     @foreach ($maps as $pos => $map)
                     <tr>
-                        <td>{{ ($pos+1) + (20 * ($maps->currentPage() - 1)) }}</td>
+                        <td>{{ rank_for_top($pos, $maps) }}</td>
                         <td><a href="{{ route('players.show', ['authid' => $map->player->authid]) }}">{{ $map->player->name }}</a></td>
                         <td>{{ $map->player->rank }}</td>
                         <td>{{ $map->kills }}</td>

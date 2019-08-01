@@ -30,7 +30,7 @@
                 <tbody>
                     @foreach ($weapons as $pos => $weapon)
                     <tr>
-                        <td>{{ ($pos+1) }}</td>
+                        <td>{{ rank_for_top($pos, $weapons) }}</td>
                         <td><a href="{{ route('players.show', ['authid' => $weapon->player->authid]) }}">{{ $weapon->player->name }}</a></td>
                         <td>{{ $weapon->player->rank }}</td>
                         <td>{{ $weapon->kills }}</td>
