@@ -20,6 +20,9 @@
             <li class="nav-item{{ request()->routeIs('weapons*') ? ' active' : ''}}">
                 <a class="nav-link" href="{{ route('weapons.index') }}">Weapons</a>
             </li>
+            <li class="nav-item{{ request()->routeIs('maps*') ? ' active' : ''}}">
+                <a class="nav-link" href="{{ route('maps.index') }}">Maps</a>
+            </li>
         </ul>
     </nav>
 
