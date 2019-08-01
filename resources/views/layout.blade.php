@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="{{ App::getLocale() }}">
 <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -9,19 +9,19 @@
     <link rel="stylesheet" href="/css/app.css">
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
 
-    <title>@yield('title')Player Stats</title>
+    <title>@yield('title')</title>
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <ul class="navbar-nav">
-            <li class="nav-item{{ request()->routeIs('top') ? ' active' : ''}}">
-                <a class="nav-link" href="/">Stats</a>
+            <li class="nav-item{{ request()->routeIs('players.index') ? ' active' : ''}}">
+                <a class="nav-link" href="/">@lang('Players')</a>
             </li>
             <li class="nav-item{{ request()->routeIs('weapons*') ? ' active' : ''}}">
-                <a class="nav-link" href="{{ route('weapons.index') }}">Weapons</a>
+                <a class="nav-link" href="{{ route('weapons.index') }}">@lang('Weapons')</a>
             </li>
             <li class="nav-item{{ request()->routeIs('maps*') ? ' active' : ''}}">
-                <a class="nav-link" href="{{ route('maps.index') }}">Maps</a>
+                <a class="nav-link" href="{{ route('maps.index') }}">@lang('Maps')</a>
             </li>
         </ul>
     </nav>

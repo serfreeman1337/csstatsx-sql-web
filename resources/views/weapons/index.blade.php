@@ -1,13 +1,13 @@
 @extends('layout')
-@section('title', 'Weapons Stats - ')
+@section('title', __('Weapons'))
 
 @section('content')
 <div class="card">
     <div class="card-body">
         <div class="card-title">
-            <span class="h2">Weapons</span>
+            <span class="h2">@lang('Weapons')</span>
             <div class="clear-fix"></div>
-            <span class="h6">From a total of <strong>{{ $total_kills }}</strong> kills with <strong>{{ $total_hs }}</strong> headshots</span>
+            <span class="h6">@lang('From a total of <strong>:kills</strong> kills with <strong>:hs</strong> headshots', ['kills' => $total_kills, 'hs' => $total_hs])</span>
         </div>
 
         <div class="row">
@@ -16,12 +16,12 @@
                     <thead>
                         <tr>
                             <th>#</th>
-                            <th>Weapon</th>
-                            <th>Kills</th>
-                            <th style="width: 100px;">Kills %</th>
-                            <th>Headshots</th>
-                            <th style="width: 100px;">Headshots %</th>
-                            <th style="width: 100px;">Hpk</th>
+                            <th>@lang('Weapon')</th>
+                            <th>@lang('Kills')</th>
+                            <th style="width: 100px;">@lang('Kills') %</th>
+                            <th>@lang('Headshots')</th>
+                            <th style="width: 100px;">@lang('Headshots') %</th>
+                            <th style="width: 100px;">@lang('Hpk')</th>
                         </tr>
                     </thead>
                     <tbody>

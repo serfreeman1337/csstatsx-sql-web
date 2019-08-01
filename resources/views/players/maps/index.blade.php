@@ -1,20 +1,21 @@
 @extends('players.layout')
 
+@section('title', $player->name.' - '.__('Maps'))
 @section('stats')
 <div class="row">
     <div class="col">
         <table class="table table-bordered table-sm text-center">
             <thead>
                 <tr>
-                    <th>Map</th>
-                    <th>Time</th>
-                    <th>Rounds</th>
-                    <th>Rounds Won</th>
-                    <th>Win Rate</th>
-                    <th>Kills</th>
-                    <th>Deaths</th>
-                    <th>K/D</th>
-                    <th>HS</th>
+                    <th>@lang('Map')</th>
+                    <th>@lang('Time')</th>
+                    <th>@lang('Rounds')</th>
+                    <th>@lang('Rounds Won')</th>
+                    <th>@lang('Win Rate')</th>
+                    <th>@lang('Kills')</th>
+                    <th>@lang('Deaths')</th>
+                    <th>@lang('K/D')</th>
+                    <th>@lang('HS')</th>
                 </tr>
             </thead>
             <tbody>

@@ -1,16 +1,16 @@
 @extends('layout')
-@section('title', 'Maps Stats - ')
 
+@section('title', __('Maps').' - '.$map)
 @section('content')
 <div class="card">
     <div class="card-body">
         <div class="card-title">
-            <span class="h2">{{ $map }} map stats</span>
+            <span class="h2">@lang('Top players of :map', ['map' => $map])</span>
             <div class="float-right">
                 {{ $maps->links() }}
             </div>
             <div class="clear-fix"></div>
-            <span class="h6">From a total of <strong>{{ $total_kills }}</strong> kills with <strong>{{ $total_hs }}</strong> headshots</span>
+            <span class="h6">@lang('From a total of <strong>:kills</strong> kills with <strong>:hs</strong> headshots', ['kills' => $total_kills, 'hs' => $total_hs])</span>
         </div>
 
         <div class="card-text">
@@ -18,13 +18,13 @@
                 <thead>
                     <tr>
                         <th>#</th>
-                        <th>Player</th>
-                        <th>Rank</th>
-                        <th>Kills</th>
-                        <th>Deaths</th>
-                        <th>Kpd</th>
-                        <th>Hs</th>
-                        <th style="width: 100px;">Hpk</th>
+                        <th>@lang('Player')</th>
+                        <th>@lang('Rank')</th>
+                        <th>@lang('Kills')</th>
+                        <th>@lang('Deaths')</th>
+                        <th>@lang('Kpd')</th>
+                        <th>@lang('Hs')</th>
+                        <th style="width: 100px;">@lang('Hpk')</th>
                     </tr>
                 </thead>
                 <tbody>

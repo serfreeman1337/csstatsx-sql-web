@@ -1,18 +1,19 @@
 @extends('players.layout')
 
+@section('title', $player->name.' - '.__('Weapons'))
 @section('stats')
 <div class="row">
     <div class="col">
         <table class="table table-bordered table-sm text-center">
             <thead>
                 <tr>
-                    <th>Weapon</th>
-                    <th>Kills</th>
-                    <th>Headshots</th>
-                    <th>Shots</th>
-                    <th>Hits</th>
-                    <th>Accuracy</th>
-                    <th>Damage</th>
+                    <th>@lang('Weapon')</th>
+                    <th>@lang('Kills')</th>
+                    <th>@lang('Headshots')</th>
+                    <th>@lang('Shots')</th>
+                    <th>@lang('Hits')</th>
+                    <th>@lang('Accuracy')</th>
+                    <th>@lang('Damage')</th>
                 </tr>
             </thead>
             <tbody>

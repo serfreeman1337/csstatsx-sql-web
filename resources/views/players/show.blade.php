@@ -1,48 +1,49 @@
 @extends('players.layout')
 
+@section('title', $player->name)
 @section('stats')
 <div class="row">
     <div class="col">
         <table class="table table-bordered table-sm">
             <tbody>
                 <tr>
-                    <td>Skill</td>
+                    <td>@lang('Skill')</td>
                     <td>{{ $player->skill }}</td>
                 </tr>
                 <tr>
-                    <td>Kills</td>
+                    <td>@lang('Kills')</td>
                     <td>{{ $player->kills }}</td>
                 </tr>
                 <tr>
-                    <td>Deaths</td>
+                    <td>@lang('Deaths')</td>
                     <td>{{ $player->deaths }}</td>
                 </tr>
                 <tr>
-                    <td>Headshots</td>
+                    <td>@lang('Headshots')</td>
                     <td>{{ $player->hs }}</td>
                 </tr>
                 <tr>
-                    <td>K/D</td>
+                    <td>@lang('K/D')</td>
                     <td>{{ calculate_ratio($player->kills, $player->deaths, false) }}</td>
                 </tr>
                 <tr>
-                    <td>H/K</td>
+                    <td>@lang('H/K')</td>
                     <td>{{ calculate_ratio($player->hs, $player->kills, false) }}</td>
                 </tr>
                 <tr>
-                    <td>Damage</td>
+                    <td>@lang('Damage')</td>
                     <td>{{ $player->dmg }} HP</td>
                 </tr>
                 <tr>
-                    <td>Shots Fired</td>
+                    <td>@lang('Shots Fired')</td>
                     <td>{{ $player->shots }}</td>
                 </tr>
                 <tr>
-                    <td>Shots Hit</td>
+                    <td>@lang('Shots Hit')</td>
                     <td>{{ $player->hits }}</td>
                 </tr>
                 <tr>
-                    <td>Shots Accuracy</td>
+                    <td>@lang('Shots Accuracy')</td>
                     <td>
                         {{ calculate_ratio($player->hits, $player->shots) }}%
                     </td>
@@ -54,13 +55,13 @@
         <table class="table table-bordered table-sm">
             <tbody>
                 <tr>
-                    <td>Rounds</td>
+                    <td>@lang('Rounds')</td>
                     <td>
-                        {{ $player->rounds_played }} (Win.: {{ $player->rounds_won }}, Loss.: {{ $player->rounds_played - $player->rounds_won }})
+                        {{ $player->rounds_played }} (@lang('Win.'): {{ $player->rounds_won }}, @lang('Loss.'): {{ $player->rounds_played - $player->rounds_won }})
                     </td>
                 </tr>
                 <tr>
-                    <td>Teams</td>
+                    <td>@lang('Teams')</td>
                     <td>
                         {!! bootstrap_progress([
                             [
@@ -68,7 +69,7 @@
                                 'of' => $player->rounds_played,
                                 'print_val' => true,
                                 'tip' => 'top',
-                                'tip_text' => '%ratio% of rounds as CT'
+                                'tip_text' => __('%ratio% as CT')
                             ],
                             [
                                 'num' => $player->roundt,
@@ -76,13 +77,13 @@
                                 'class' => 'bg-danger',
                                 'print_val' => true,
                                 'tip' => 'top',
-                                'tip_text' => '%ratio% of rounds as Terrorist'
+                                'tip_text' => __('%ratio% as Terrorist')
                             ]
                         ]) !!}
                     </td>
                 </tr>
                 <tr>
-                    <td>Wins</td>
+                    <td>@lang('Wins')</td>
                     <td>
                         {!! bootstrap_progress([
                             [
@@ -90,7 +91,7 @@
                                 'of' => $player->rounds_played,
                                 'print_val' => true,
                                 'tip' => 'top',
-                                'tip_text' => '%ratio% of wins as CT'
+                                'tip_text' => __('%ratio% as CT')
                             ],
                             [
                                 'num' => $player->wint,
@@ -98,37 +99,37 @@
                                 'class' => 'bg-danger',
                                 'print_val' => true,
                                 'tip' => 'top',
-                                'tip_text' => '%ratio% of wins as Terrorist'
+                                'tip_text' => __('%ratio% as Terrorist')
                             ]
                         ]) !!}
                     </td>
                 </tr>
                 <tr>
-                    <td>Bomb Plants</td>
+                    <td>@lang('Bomb Plants')</td>
                     <td>{{ $player->bombplants }}</td>
                 </tr>
                 <tr>
-                    <td>Bomb Explosions</td>
+                    <td>@lang('Bomb Explosions')</td>
                     <td>{{ $player->bombexplosions }}</td>
                 </tr>
                 <tr>
-                    <td>Bomb Defused</td>
+                    <td>@lang('Bomb Defused')</td>
                     <td>{{ $player->bombdefused }}</td>
                 </tr>
                 <tr>
-                    <td>Assists</td>
+                    <td>@lang('Assists')</td>
                     <td>{{ $player->assists }}</td>
                 </tr>
                 <tr>
-                    <td>Last Connect</td>
-                    <td>{{ date('j M Y H:i:s', strtotime($player->last_join)) }} (Total: {{ $player->connects }} Connects)</td>
+                    <td>@lang('Last Connect')</td>
+                    <td>{{ date('j M Y H:i:s', strtotime($player->last_join)) }} (@lang('Total: :connects Connects', ['connects' => $player->connects]))</td>
                 </tr>
                 <tr>
-                    <td>Connection Time</td>
+                    <td>@lang('Connection Time')</td>
                     <td>{{ $player->connection_time }} seconds</td>
                 </tr>
                 <tr>
-                    <td>First Connect</td>
+                    <td>@lang('First Connect')</td>
                     <td>{{ date('j M Y H:i:s', strtotime($player->first_join)) }}</td>
                 </tr>
             </tbody>

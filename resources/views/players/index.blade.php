@@ -1,10 +1,11 @@
 @extends('layout')
+@section('title', __('Players'))
 
 @section('content')
 <div class="card">
     <div class="card-body">
         <div class="card-title">
-            <span class="h2">Top Players</span>
+            <span class="h2">@lang('Top Players')</span>
 
             <div class="float-right">
                 {{ $players->links() }}
@@ -15,14 +16,14 @@
             <table class="table table-bordered table-sm text-center">
                 <thead>
                     <tr>
-                        <th scope="col">Rank</th>
-                        <th scope="col" class="text-left">Name</th>
-                        <th scope="col">Skill</th>
-                        <th scope="col">Kills</th>
-                        <th scope="col">Deaths</th>
-                        <th scope="col">Headshots</th>
-                        <th scope="col">K/D</th>
-                        <th scope="col">Last game</th>
+                        <th scope="col">@lang('Rank')</th>
+                        <th scope="col" class="text-left">@lang('Name')</th>
+                        <th scope="col">@lang('Skill')</th>
+                        <th scope="col">@lang('Kills')</th>
+                        <th scope="col">@lang('Deaths')</th>
+                        <th scope="col">@lang('Headshots')</th>
+                        <th scope="col">@lang('K/D')</th>
+                        <th scope="col">@lang('Last Connect')</th>
                     </tr>
                 </thead>
                 <tbody>
