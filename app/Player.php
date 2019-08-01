@@ -27,6 +27,9 @@ class Player extends Model
 
     public function getRankAttribute()
     {
+        if (env('CSSTATS_SQL_RANKFORMULA') == 3) {
+            return Player::whereRaw('cast(skill as decimal(12,2)) >= ?', [$this->score])->count();
+        }
         return Player::whereRaw(Player::getRankFormula().' >= '.$this->score)->count();
     }
 
