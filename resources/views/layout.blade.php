@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="/css/app.css">
+    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
 
     <title>@yield('title')</title>
@@ -15,7 +15,7 @@
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <ul class="navbar-nav">
             <li class="nav-item{{ request()->routeIs('players.index') ? ' active' : ''}}">
-                <a class="nav-link" href="/">@lang('Players')</a>
+                <a class="nav-link" href="{{ route('players.index') }}">@lang('Players')</a>
             </li>
             @if (env('CSSTATS_SQL_WEAPONS'))
             <li class="nav-item{{ request()->routeIs('weapons*') ? ' active' : ''}}">
@@ -34,6 +34,6 @@
         @yield('content')
     </div>
 
-    <script src="/js/app.js" charset="utf-8"></script>
+    <script src="{{ asset('js/app.js') }}" charset="utf-8"></script>
 </body>
 </html>
