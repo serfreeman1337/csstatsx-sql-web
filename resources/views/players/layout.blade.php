@@ -15,18 +15,22 @@
                     @lang('Overall')
                 </a>
             </li>
+            @if (env('CSSTATS_SQL_WEAPONS'))
             <li class="nav-item">
                 <a class="nav-link{{ request()->routeIs('players.show.weapons') ? ' active' : ''}}"
                     href="{{ route('players.show.weapons', ['authid' => $player->authid]) }}">
                     @lang('Weapons')
                 </a>
             </li>
+            @endif
+            @if (env('CSSTATS_SQL_MAPS'))
             <li class="nav-item">
                 <a class="nav-link{{ request()->routeIs('players.show.maps') ? ' active' : ''}}"
                     href="{{ route('players.show.maps', ['authid' => $player->authid]) }}">
                     @lang('Maps')
                 </a>
             </li>
+            @endif
         </ul>
 
         @yield('stats')
