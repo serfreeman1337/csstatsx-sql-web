@@ -13,7 +13,7 @@
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <ul class="navbar-nav">
+        <ul class="navbar-nav mr-auto">
             <li class="nav-item{{ request()->routeIs('players.index') ? ' active' : ''}}">
                 <a class="nav-link" href="{{ route('players.index') }}">@lang('Players')</a>
             </li>
@@ -28,6 +28,10 @@
             </li>
             @endif
         </ul>
+        <form class="form-inline my-2 my-lg-0" method="GET" action="{{ route('players.search') }}">
+            <input class="form-control mr-sm-2" type="search" placeholder="@lang('Search')" aria-label="Search" name="q" value="{{ request()->get('q') }}">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">@lang('Search')</button>
+        </form>
     </nav>
 
     <div class="container my-2">

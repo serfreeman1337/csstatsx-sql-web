@@ -12,6 +12,7 @@
 */
 
 Route::get('', "PlayerController@index")->name('players.index');
+Route::get('search', 'PlayerController@search')->name('players.search');
 Route::get('players/{authid}', 'PlayerController@show')->name('players.show');
 
 if (env('CSSTATS_SQL_WEAPONS')) {

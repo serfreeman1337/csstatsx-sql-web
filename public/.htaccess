@@ -1,9 +1,13 @@
+DirectoryIndex index.php
+
 <IfModule mod_rewrite.c>
     <IfModule mod_negotiation.c>
         Options -MultiViews -Indexes
     </IfModule>
 
     RewriteEngine On
+    # Change this to match your sub-folder !
+    RewriteBase /stats
 
     # Handle Authorization Header
     RewriteCond %{HTTP:Authorization} .

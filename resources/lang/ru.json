@@ -45,5 +45,7 @@
     "From a total of <strong>:kills</strong> kills with <strong>:hs</strong> headshots": "из <strong>:kills</strong> убийств в общей сложности с <strong>:hs</strong> выстрелами в голову",
     "Top players with :weapon": "Лучшие игроки с :weapon",
     "Player": "Игрок",
-    "Top players of :map": "Лучшие игроки карты :map"
+    "Top players of :map": "Лучшие игроки карты :map",
+    "Search": "Поиск",
+    "Search results": "Результат поиска"
 }
